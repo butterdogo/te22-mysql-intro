@@ -1,18 +1,15 @@
-<!DOCTYPE html>
-<html lang="sv">
+{% extends "layout.njk" %}
+{% block content %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ title }}</title>
-  <link rel="stylesheet" href="/css/style.css">
-</head>
 
-<body>
-
+<main class="container">
   {% for bird in birds %}
-  <p>{{birds}}</p>
+  <p>
+    <a href="./birds/{{bird.id}}"><br><b>Name:</b> {{ bird.name }}, <b>species:</b> {{ bird.species }}</br></a>
+  </p>
   {% endfor %}
+</main>
 </body>
 
-</html>
+
+{% endblock %}

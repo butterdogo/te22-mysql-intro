@@ -11,6 +11,8 @@ nunjucks.configure("views", {
     express: app,
 })
 
+app.use(express.static("public"))
+
 app.get("/birds", async (req, res) => {
     // const [birds] = await pool.promise().query('SELECT * FROM birds')
     const [birds] = await pool
@@ -18,7 +20,9 @@ app.get("/birds", async (req, res) => {
         .query(
             "SELECT birds.*, species.name AS species FROM birds JOIN species ON birds.species_id = species.id;",
         )
-    res.json(birds)
+        res.render("birds.njk", {
+            birds
+        })
 })
 
 app.get("/birds/:id", async (req, res) => {
@@ -28,22 +32,13 @@ app.get("/birds/:id", async (req, res) => {
             "SELECT birds.*, species.name AS species FROM birds JOIN species ON birds.species_id = species.id WHERE birds.id = ?;",
             [req.params.id],
         )
-    res.json(bird[0])
-})
-
-app.get("/birdsnjk", async (req, res) => {
-
-    const [birds] = await pool
-        .promise()
-        .query(
-            "SELECT birds.*, species.name AS species FROM birds JOIN species ON birds.species_id = species.id;",
-        )
-
-    res.render("birds.njk", {
-        birds
+    res.render("bird.njk", {
+        bird:bird[0]
     })
-
+    console.log(bird)
 })
+
+
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)

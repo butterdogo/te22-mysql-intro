@@ -1,0 +1,21 @@
+body{
+    font-family: monospace;
+}
+
+.container{
+
+max-width: 100vh;
+margin-left: auto;
+margin-right: auto;
+font-size: 1.4rem;
+}
+
+header{
+
+text-align: center;
+font-size: 2rem;
+font-family: monospace;
+
+
+
+}
