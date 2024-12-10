@@ -1,18 +1,12 @@
 {% extends "layout.njk" %}
 {% block content %}
 
-
 <header>
-    <h1>Hello</h1>
+    <h1>{{bird.name}} är en {{bird.species}}</h1>
 </header>
+
 <main class="container">
-    <p>{{bird.name}}</p>
-
-
-
-
-
+    <p>Han har ett vingspann på {{bird.wingspan}} mm</p>
 </main>
-
 
 {% endblock %}
