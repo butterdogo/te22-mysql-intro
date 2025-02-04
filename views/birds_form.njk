@@ -8,8 +8,8 @@
     <input type="number" name="wingspan" id="wingspan">
     <label for="species_id">Species</label>
     <select name="species_id" id="species_id">
-      {% for items in species %}
-        <option value="{{item.id}}">{{item.name}}</option>
+      {% for specie in species %}
+        <option value="{{user.id}}">{{user.name}}</option>
       {% endfor %}
      </select>
     <button type="submit">Submit</button>
